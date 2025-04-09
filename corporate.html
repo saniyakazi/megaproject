@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Events</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- swiperjs cdn link  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- custom css link  -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<header class="header"> 
+    <h1 class="page-title">Corporate Events</h1>
+
+    <div class="icons">
+        <div class="fas fa-moon" id="theme-btn"></div>
+    </div>
+
+    <button id="closeNavbar" style="position:absolute;top:20px;right:70px;font-size:28px;color:rgb(235, 23, 23);background:none;border:none;cursor:pointer;">&times;</button>
+
+</header>
+<body>
+    <section class="aboutevent" id="aboutevent" style="padding: 110px;">
+         <div class="image">
+                <img src="images/about.jpg" alt="">
+            </div>
+        </div>
+     </section>
+<!-- swiperjs cdn link -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- custom js link  -->
+ <script src="script.js"></script>
+    <script>
+    const abouteventSection = document.querySelector(".aboutevent");
+    const servicesNavbar = document.getElementById("servicesNavbar");
+
+    // Close About & open Services on scroll
+    window.addEventListener("scroll", function handleScroll() {
+        if (abouteventSection && servicesNavbar) {
+            abouteventSection.style.display = "none"; // Hide About section
+            servicesNavbar.style.display = "flex"; // Show Services dropdown
+            servicesNavbar.scrollIntoView({ behavior: "smooth" }); // Scroll to it
+        }
+
+        // Remove listener to avoid repeat
+        window.removeEventListener("scroll", handleScroll);
+    });
+
+    // Also close with the close (×) button
+   
+document.getElementById("closeNavbar").addEventListener("click", () => {
+    const abouteventSection = document.querySelector(".aboutevent");
+
+    if (abouteventSection) {
+        // Start fade-out animation
+        abouteventSection.classList.add("fade-out");
+
+        // Wait for animation to finish, then redirect
+        setTimeout(() => {
+            abouteventSection.style.display = "none";
+            window.location.href = "services.html";
+        }, 600); // match the transition duration (0.3s)
+    }
+});
+
+</script>
+
+
+</body>
+</html>
